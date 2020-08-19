@@ -1,5 +1,7 @@
 require "tty-prompt"
 
+prompt = TTY::Prompt.new
+
 class Cli 
     attr_reader :user 
 
@@ -16,13 +18,12 @@ class Cli
         else 
             puts "Please create a username to join the Musicly family!"
             @user = gets.strip 
-            #binding.pry
         end
         artist_selection
     end
 
     def artist_selection 
-        puts "Welcome #{@user}, pick your favroite artist to start you experince"
+        prompt.multi_select ("Welcome #{@user}, pick your favroite artist to start you experince")
 
 
     end
