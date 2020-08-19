@@ -1,3 +1,3 @@
 class Song < ActiveRecord::Base 
-    has_many :artist, through: :playlist 
+    has_many :artists, through: :playlist 
 end

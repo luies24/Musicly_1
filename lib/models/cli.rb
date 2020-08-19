@@ -3,10 +3,16 @@ require "tty-prompt"
 prompt = TTY::Prompt.new
 
 class Cli 
+
+    def tty_prompt
+        TTY::Prompt.new 
+    end
+
     attr_reader :user 
 
     def initialize user=nil 
         @user = nil 
+        @prompt = tty_prompt
     end
 
     def start
@@ -21,10 +27,9 @@ class Cli
         end
         artist_selection
     end
+    binding.pry
 
     def artist_selection 
-        prompt.multi_select ("Welcome #{@user}, pick your favroite artist to start you experince")
-
-
+        @prompt.multi_select("Welcome #{@user}, Please select you favorite artists", Artist.artist_choices)
     end
-end
+ end
