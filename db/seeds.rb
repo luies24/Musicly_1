@@ -1,6 +1,6 @@
-Artists.distory_all 
-Songs.distory_all 
-Playlists.distory_all 
+Artist.destroy_all 
+Song.destroy_all 
+Playlist.destroy_all 
 
 
 drake = Artist.create(stage_name: "Drake", popularity: 5, like: nil)

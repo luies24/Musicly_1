@@ -19,12 +19,12 @@ class Cli
             puts "Please create a username to join the Musicly family!"
             @user = gets.strip 
         end
-        artist_selection
+        #artist_selection
     end
 
-    def artist_selection 
-        prompt.multi_select ("Welcome #{@user}, pick your favroite artist to start you experince")
+    # def artist_selection 
+    #     prompt.multi_select ("Welcome #{@user}, pick your favroite artist to start you experince")
 
 
-    end
+    # end
 end
