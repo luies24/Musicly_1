@@ -27,9 +27,18 @@ class Cli
         end
         artist_selection
     end
-    binding.pry
+    #binding.pry
 
     def artist_selection 
-        @prompt.multi_select("Welcome #{@user}, Please select you favorite artists", Artist.artist_choices)
+        @artist = @prompt.multi_select("Welcome #{@user}, Please select you favorite artists", Artist.artist_choices)
+        selection = @artist
+        show_songs_by_artist(selection)
+    end
+
+    def show_songs_by_artist selection
+        selection.select do |artist|
+            artist == all[stage_name]
+            
+        end
     end
  end
