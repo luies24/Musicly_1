@@ -13,8 +13,9 @@ class Cli
     end
     
     def banner
-        App.banner
+        puts App.header
     end
+
 
     attr_reader :user 
 
@@ -25,6 +26,7 @@ class Cli
     end
 
     def start
+        banner
         puts "Welcome Musicly, have you been here before? (y/n)"
         answer = gets.strip 
         if answer == "y"
