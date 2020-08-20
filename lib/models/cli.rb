@@ -36,9 +36,14 @@ class Cli
     end
 
     def show_songs_by_artist selection
-        selection.select do |artist|
-            artist == all[stage_name]
-            
-        end
+       songs = selection.map do |artist|
+            artist.songs
+        end.flatten
+        song_selection(songs)
+    end
+
+    def song_selection(songs)
+        binding.pry
+        @prompt.multi_select("Select song", songs.title)
     end
  end
