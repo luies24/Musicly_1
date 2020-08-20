@@ -1,6 +1,6 @@
-Artists.distory_all 
-Songs.distory_all 
-Playlists.distory_all 
+Artist.destroy_all 
+Song.destroy_all 
+Playlist.destroy_all 
 
 
 drake = Artist.create(stage_name: "Drake", popularity: 5, like: nil)
@@ -13,4 +13,8 @@ climbback = Song.create(title: "The Climb Back", featuring: nil, popularity: 4, 
 kevinsheart = Song.create(title: "Kevin's Heart", featuring: nil, popularity: 3, like: nil)
 iloveit = Song.create(title: "I love it", featuring: "Kanye West", popularity: 4, like: nil)
 
-song1 = Playlist.create(artist: drake, song: childsplay)
+childsplay = Playlist.create(artist: drake, song: childsplay)
+greece = Playlist.create(artist: drake, song: greece)
+climbback = Playlist.create(artist: jcole, song: climbback)
+kevinsheart = Playlist.create(artist: jcole, song: kevinsheart)
+iloveit = Playlist.create(artist: lilpump, song: iloveit)
