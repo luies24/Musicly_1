@@ -3,10 +3,16 @@ require "tty-prompt"
 prompt = TTY::Prompt.new
 
 class Cli 
+
+    def tty_prompt
+        TTY::Prompt.new 
+    end
+
     attr_reader :user 
 
     def initialize user=nil 
         @user = nil 
+        @prompt = tty_prompt
     end
 
     def start
@@ -19,12 +25,25 @@ class Cli
             puts "Please create a username to join the Musicly family!"
             @user = gets.strip 
         end
-        #artist_selection
+        artist_selection
+    end
+    #binding.pry
+
+    def artist_selection 
+        @artist = @prompt.multi_select("Welcome #{@user}, Please select you favorite artists", Artist.artist_choices)
+        selection = @artist
+        show_songs_by_artist(selection)
     end
 
-    # def artist_selection 
-    #     prompt.multi_select ("Welcome #{@user}, pick your favroite artist to start you experince")
+    def show_songs_by_artist selection
+       songs = selection.map do |artist|
+            artist.songs
+        end.flatten
+        song_selection(songs)
+    end
 
-
-    # end
-end
+    def song_selection(songs)
+        binding.pry
+        @prompt.multi_select("Select song", Song.song_choices)
+    end
+ end

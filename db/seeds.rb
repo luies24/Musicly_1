@@ -13,4 +13,8 @@ climbback = Song.create(title: "The Climb Back", featuring: nil, popularity: 4, 
 kevinsheart = Song.create(title: "Kevin's Heart", featuring: nil, popularity: 3, like: nil)
 iloveit = Song.create(title: "I love it", featuring: "Kanye West", popularity: 4, like: nil)
 
-song1 = Playlist.create(artist: drake, song: childsplay)
+childsplay = Playlist.create(artist: drake, song: childsplay)
+greece = Playlist.create(artist: drake, song: greece)
+climbback = Playlist.create(artist: jcole, song: climbback)
+kevinsheart = Playlist.create(artist: jcole, song: kevinsheart)
+iloveit = Playlist.create(artist: lilpump, song: iloveit)
