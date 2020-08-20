@@ -5,7 +5,15 @@ prompt = TTY::Prompt.new
 class Cli 
 
     def tty_prompt
-        TTY::Prompt.new 
+        TTY::Prompt.new( 
+            symbols: { marker: '🎤'}, 
+            active_color: :blue,
+            help_color: :bright_blue 
+        )
+    end
+    
+    def banner
+        App.banner
     end
 
     attr_reader :user 
@@ -31,8 +39,7 @@ class Cli
 
     def artist_selection 
         @artist = @prompt.multi_select("Welcome #{@user}, Please select you favorite artists", Artist.artist_choices)
-        selection = @artist
-        show_songs_by_artist(selection)
+        show_songs_by_artist(@artist)
     end
 
     def show_songs_by_artist selection
@@ -43,7 +50,8 @@ class Cli
     end
 
     def song_selection(songs)
-        binding.pry
-        @prompt.multi_select("Select song", songs.title)
+       favorite_songs = @prompt.multi_select("Select you fa", Song.song_choices(songs))
+        favorite_songs
     end
+
  end
