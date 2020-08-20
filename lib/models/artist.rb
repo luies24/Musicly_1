@@ -5,8 +5,8 @@ class Artist < ActiveRecord::Base
     def self.artist_choices 
        choices = {}
         all.each do |artist| 
-        choices[artist.stage_name] = artist
-       end
+            choices[artist.stage_name] = artist
+        end
        choices
     end
 

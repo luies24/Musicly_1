@@ -21,6 +21,7 @@ class Cli
     def initialize user=nil 
         @user = nil 
         @prompt = tty_prompt
+        @count = 0
     end
 
     def start
@@ -50,8 +51,14 @@ class Cli
     end
 
     def song_selection(songs)
-       favorite_songs = @prompt.multi_select("Select you fa", Song.song_choices(songs))
-        favorite_songs
+        favorite_songs = @prompt.multi_select("Select you fa", Song.song_choices(songs))
+        final_message(@artist, favorite_songs)
     end
 
+    def final_message artist, songs
+        puts "Your playlist was created!"
+        puts "It includes the following:
+                "
+        songs.each {|song| puts "-#{song}"}
+    end
  end
