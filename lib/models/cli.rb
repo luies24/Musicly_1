@@ -61,5 +61,4 @@ class Cli
                 "
         songs.each {|song| puts "-#{song}"}
     end
-
  end
