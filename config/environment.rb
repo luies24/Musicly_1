@@ -5,4 +5,3 @@ ActiveRecord::Base.logger = nil
 
 require_all 'lib'
 
-binding.pry

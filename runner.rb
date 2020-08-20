@@ -3,7 +3,7 @@ require_relative 'config/environment'
 
 Cli.new.start
 
-binding.pry
+#binding.pry
 
 
 
