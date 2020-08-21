@@ -40,27 +40,27 @@ ruby
 
 ```
 def start
-banner
-puts "Welcome Musicly, have you been here before? (y/n)"
-answer = gets.strip
-if answer == "y"
-puts "Please type in your username!"
-@user = gets.strip
-else
-puts "Please create a username to join the Musicly family!"
-@user = gets.strip
-end
-artist_selection
-end
-ruby
-def artist_selection
-@artist = @prompt.multi_select("Welcome #{@user}, Please select you favorite artists.", Artist.artist_choices)
-if @artist == []
-artist_selection
-else
-show_songs_by_artist(@artist)
-end
-end
+        banner
+        puts "Welcome Musicly, have you been here before? (y/n)"
+        answer = gets.strip
+        if answer == "y"
+            puts "Please type in your username!"
+            @user = gets.strip
+        else
+            puts "Please create a username to join the Musicly family!"
+            @user = gets.strip
+        end
+        artist_selection
+    end
+
+    def artist_selection
+        @artist = @prompt.multi_select("Welcome #{@user}, Please select you favorite artists.", Artist.artist_choices)
+        if @artist == []
+            artist_selection
+        else
+            show_songs_by_artist(@artist)
+        end
+    end
 ```
 
 ## Features
