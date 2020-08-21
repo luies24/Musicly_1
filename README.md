@@ -1,71 +1,88 @@
-# Mod 1 ActiveRecord Starter Repo
+# Musicly
 
-In `config/database.yml`, you can change the name of the database from `db/cats.sqlite3` to whatever reflects your project. For example: `db/notes.sqlite3`. Doesn't really matter what you call the db. 
+> Your new favorite Music Application!!!
 
+## Table of contents
 
+- [General info](#general-info)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Features](#features)
+- [Status](#status)
+- [Inspiration](#inspiration)
+- [Contact](#contact)
+- [License](#license)
 
-## ActiveRecord Methods
-These common ActiveRecord methods will help you interact with your database. Please refer to the ActiveRecord
-docs for what they do and how to use them. (If the docs talk about Rails, that is ok! ActiveRecord works very
- similar with or without Rails.)
-```
-  .create (.new, .save)
-  .all
-  .count
-  .find
-  .find_by
-  .where
-```
+## General info
 
-#### Notes
+Musicly is a playlist application that makes it simple to reconnect with your favorite artists as well as songs. It also gives users the ability to see a playlist of their favorite songs. Join the Musicly family today!
 
-*Remember*, any model that will have a corresponding table in the database needs to inherit from `ActiveRecord::Base`
-ex:
-```
-class Cat < ActiveRecord::Base
-  # customer methods defined here
+## Technologies
+
+- Ruby
+- ActiveRecord - version 6.0.1
+- Sinatra - version 2.0.7
+- Sinatra-activerecord - version 2.0.14
+- SQLite3 - version 1.4.1
+- TTY-Box - version 0.6
+- TTY-Prompt - version 0.22
+- TTY-Spinner - version 0.9.3S
+
+## Setup
+
+To run this project, install it locally by cloning the GitHub repository and typing:
+ruby
+ruby runner.rb
+
+## Code Examples
+
+ruby
+def start
+banner
+puts "Welcome Musicly, have you been here before? (y/n)"
+answer = gets.strip
+if answer == "y"
+puts "Please type in your username!"
+@user = gets.strip
+else
+puts "Please create a username to join the Musicly family!"
+@user = gets.strip
 end
-```
+artist_selection
+end
+ruby
+def artist_selection
+@artist = @prompt.multi_select("Welcome #{@user}, Please select you favorite artists.", Artist.artist_choices)
+if @artist == []
+artist_selection
+else
+show_songs_by_artist(@artist)
+end
+end
 
-- To view database, you can run `sqlite3 db/cats.db`, then can run `.schema` or `.tables` and can run any SQL commands. (Don't need to do this anymore though! ActiveRecord gives us a schema file!)
+## Features
 
+- Creates user
+- Database allows artists to be displayed to the user
+- Database allows section of artists to return their songs
+- Gives the user a list of their favorite songs
+- Banners for beginning/end of application
+- Loops artist selection until artist are selected
+- Added spinner to simulate loading
 
-### Steps to setup Ruby app with activerecord
-(New for ActiveRecord 6.0)
+## Status
 
+Project is: finished with option to expand functionality and DRY out code.
 
-## The following steps are already done for you in this boiler plate repo. 
-## The steps below are provided to you as a reference only. 
-## You're not expected to memorize this (please don't).
+## Inspiration
 
+The inspiration for Musicly is the love of music, mixed with the love of technology.
 
-1. In root of project, run `bundle init`
-1. Add gems: 
-  `bundle add activerecord pry sinatra, sinatra-activerecord rake sqlite3 require_all`
-  run `bundle install`
-1. mkdir config and lib 
-1. mkdir lib/models
-1. touch config/environment.rb config/database.yml
-1. Create your model files and models (make sure to have your models inherit from ActiveRecord::Base)
-1. In config/environment.rb:
-```
-  require 'bundler/setup'
-  Bundler.require
+## Contact
 
-  require_all 'lib'
-```
-1. In config/database.yml:
-  ```
-  development:
-    adapter: sqlite3
-    database: db/cats.sqlite3
-  ```
-1. Touch Rakefile - require ‘config/environment.rb’ and require_relative ‘sinatra/activerecord/rake’ 
-1. Run rake -T to make sure we have access to raketasks
-1. Run `rake db:create_migration NAME=create_cats_table` (will create the db folder if it doesn’t already exist) and will add the migration file to db/migration
-1. Write migration file, then run `rake db:migrate`
-1. Then can see schema in file structure, can also drop into sqlite3 cats.db to see the tables and schema, but don’t really need to do that anymore. *Review rollback here*
-1. Create seeds in db/seeds.rb and run `rake db:seed`
-1. Now can put a pry in environment.rb to run <ModelName>.all and see your seeds.
+Created by [Terrell Cooper](https://www.linkedin.com/in/terrell-cooper-43252aaa/) and [Luis Garcia](https://www.linkedin.com/in/luis-garcia-83178b1b4/)
+Feel free to contact us to talk music or talk code!!! 🎤
 
-Make sure your models inherit from `ActiveRecord::Base`
+## License
+
+[Click to view](https://github.com/luies24/Musicly_1/blob/master/LICENSE)
