@@ -3,6 +3,10 @@ class App
     def self.header(text = banner_text)
         banner = TTY::Box.frame(*box_options) {text}
     end
+    
+    def self.exit (text = exit_text)
+        banner = TTY::Box.frame(*box_options) {text}
+    end
 
     def self.box_options
         [
@@ -19,12 +23,14 @@ class App
     def self.banner_style
     {
       fg: :blue,
-      border: { fg: :blue }
+      border: { fg: :blue },
+      align: :center 
     }
     end
     
     def self.banner_text
         " 
+
         '||    ||'                  ||          '||          
          |||  |||  ... ...   ....  ...    ....   ||  .... ...
          |'|..'||   ||  ||  ||. '   ||  .|   ''  ||   '|.  | 
@@ -33,5 +39,19 @@ class App
                                                      .. |    
                                                       ''  
         "
+    end
+
+    def self.exit_text 
+        "
+
+       |''||''| '||                       '||                                         \  
+          ||     || ..    ....   .. ...    ||  ..     .... ...   ...   ... ...     ||  \\
+           ||     ||' ||  '' .||   ||  ||   || .'       '|.  |  .|  '|.  ||  ||         ||
+           ||     ||  ||  .|' ||   ||  ||   ||'|.        '|.|   ||   ||  ||  ||     ||  ||
+          .||.   .||. ||. '|..'|' .||. ||. .||. ||.       '|     '|..|'  '|..'|.        ||
+                                                       .. |                             //
+                                                         ''                             /  
+        
+    "
     end
 end

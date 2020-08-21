@@ -16,7 +16,6 @@ class Cli
         puts App.header
     end
 
-
     attr_reader :user 
 
     def initialize user=nil 
@@ -62,5 +61,14 @@ class Cli
         puts "It includes the following:
                 "
         songs.each {|song| puts "-#{song}"}
+        exit_app
+    end
+    
+    def exit_app
+        puts "Wow #{@user}, thats a great playlist!
+        "
+        puts App.exit
+        
+        
     end
  end
