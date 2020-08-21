@@ -4,7 +4,6 @@ class Song < ActiveRecord::Base
 
     def self.song_choices(songs)
         songs.map do |song| 
-            #binding.pry
             song.title
         end
     end
