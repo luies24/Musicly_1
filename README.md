@@ -37,6 +37,8 @@ ruby runner.rb
 ## Code Examples
 
 ruby
+
+```
 def start
 banner
 puts "Welcome Musicly, have you been here before? (y/n)"
@@ -59,6 +61,7 @@ else
 show_songs_by_artist(@artist)
 end
 end
+```
 
 ## Features
 
