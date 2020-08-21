@@ -10,8 +10,6 @@ class App
             height: 12,
             align: :center,
             style: banner_style
-
-
         ]
 
     end
