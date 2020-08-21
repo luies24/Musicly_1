@@ -12,6 +12,14 @@ class Cli
         )
     end
     
+    def tty_spinner 
+        spinner = TTY::Spinner.new(
+            interval: 4,
+            format: :bouncing
+
+        )
+    end
+    
     def banner
         puts App.header
     end
@@ -21,6 +29,15 @@ class Cli
     def initialize user=nil 
         @user = nil 
         @prompt = tty_prompt
+        @spinner = tty_spinner
+    end
+
+    def spinner(seconds)
+        @spinner.reset 
+        @spinner.auto_spin
+        sleep(seconds)
+        @spinner.success("🎤🎶🎧")
+        #sleep(1)
     end
 
     def start
@@ -54,10 +71,14 @@ class Cli
     end
 
     def song_selection(songs)
-        favorite_songs = @prompt.multi_select("Select your favorite songs.", Song.song_choices(songs))
-        final_message(@artist, favorite_songs)
+        @favorite_songs = @prompt.multi_select("Select your favorite songs.", Song.song_choices(songs))
+        call_spinner
     end
 
+    def call_spinner 
+        spinner(5)
+        final_message(@artist, @favorite_songs)
+    end
     def final_message artist, songs
         puts "Your playlist was created!"
         puts "It includes the following songs:
